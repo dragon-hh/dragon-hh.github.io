@@ -1,615 +1,242 @@
 <!DOCTYPE html>
-<html lang="zn-CN">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="多敲多练">
-<meta property="og:type" content="website">
-<meta property="og:title" content="dragon的个人博客">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="dragon的个人博客">
-<meta property="og:description" content="多敲多练">
-<meta property="og:locale" content="zn_CN">
-<meta property="article:author" content="dragonhuang">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zn-CN'
-  };
-</script>
-
-  <title>dragon的个人博客</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        douyin: '#010101',
+                        xhs: '#ff2442',
+                        wechat: '#07c160',
+                        github: '#24292e',
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入 Google 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        /* 隐藏滚动条但保留功能 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* 渐入动画类 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 玻璃拟态卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
 </head>
+<body class="text-slate-800 antialiased relative selection:bg-indigo-200 selection:text-indigo-900">
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="تشغيل شريط التصفح">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">dragon的个人博客</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">学无止境</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zn-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/%E5%8A%9F%E8%83%BD%E5%8C%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dragonhuang">
-      <meta itemprop="description" content="多敲多练">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dragon的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/06/%E5%8A%9F%E8%83%BD%E5%8C%BA/" class="post-title-link" itemprop="url">功能区</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">نُشر في</span>
-              
-
-              <time title="أُنشأ: 2022-03-05 18:40:39 / عُدل: 10:40:39" itemprop="dateCreated datePublished" datetime="2022-03-05T18:40:39Z">2022-03-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
+    <!-- 背景装饰 -->
+    <div class="fixed inset-0 w-full h-full -z-10 overflow-hidden bg-slate-50">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000"></div>
     </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zn-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/27/%E9%9D%92%E5%B9%B4%E6%A6%9C%E6%A0%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dragonhuang">
-      <meta itemprop="description" content="多敲多练">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dragon的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/27/%E9%9D%92%E5%B9%B4%E6%A6%9C%E6%A0%B7/" class="post-title-link" itemprop="url">青年榜样</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">نُشر في</span>
-              
-
-              <time title="أُنشأ: 2022-02-26 17:23:57 / عُدل: 09:24:18" itemprop="dateCreated datePublished" datetime="2022-02-26T17:23:57Z">2022-02-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zn-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/27/%E5%A9%89%E5%A9%B7%E4%B8%93%E5%B1%9E%E6%8A%BD%E5%A5%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dragonhuang">
-      <meta itemprop="description" content="多敲多练">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dragon的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/27/%E5%A9%89%E5%A9%B7%E4%B8%93%E5%B1%9E%E6%8A%BD%E5%A5%96/" class="post-title-link" itemprop="url">婉婷专属抽奖</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">نُشر في</span>
-              
-
-              <time title="أُنشأ: 2022-02-26 16:03:32 / عُدل: 08:33:32" itemprop="dateCreated datePublished" datetime="2022-02-26T16:03:32Z">2022-02-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zn-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/10/%E6%AF%8F%E6%97%A5%E6%96%B0%E9%97%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dragonhuang">
-      <meta itemprop="description" content="多敲多练">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dragon的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/10/%E6%AF%8F%E6%97%A5%E6%96%B0%E9%97%BB/" class="post-title-link" itemprop="url">每日新闻</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">نُشر في</span>
-              
-
-              <time title="أُنشأ: 2022-02-09 23:09:32 / عُدل: 15:59:05" itemprop="dateCreated datePublished" datetime="2022-02-09T23:09:32Z">2022-02-09</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​                        </p>
-<p>​    在“民以食为天”的中国，“吃好喝好”是春节里老百姓家里的一件大事。习近平总书记历次春节前夕的考察，留下了许多与舌尖上的年味儿相关的故事。</p>
-<p>2016年春节前夕，在江西神山村村民家，总书记和村民围坐成一圈，有老乡把刚刚蒸熟的米果端了过来，介绍说是去亲戚家拜年要带的。总书记细细品尝味道，称赞说“这风俗很好”。</p>
-<p>2017年春节前夕，在河北德胜村村民家的灶台边，总书记一手拿着筷子、一手拿着漏勺，炸起了寓意年年高升的年糕。金灿灿的年糕甜香扑鼻，油香味儿伴随着喜庆的年味儿一起升腾。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/10/%E6%AF%8F%E6%97%A5%E6%96%B0%E9%97%BB/#more" rel="contents">
-                تابع القراءة &raquo;
-              </a>
+    <main class="max-w-4xl mx-auto px-6 py-16 sm:py-24">
+        
+        <!-- Header & 基本信息 -->
+        <header class="flex flex-col items-center text-center reveal active">
+            <div class="relative w-32 h-32 mb-6 group cursor-pointer">
+                <!-- 替换为你的真实头像 URL -->
+                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix&backgroundColor=e2e8f0" alt="Avatar" class="w-full h-full object-cover rounded-full shadow-lg border-4 border-white transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3">
+                <div class="absolute inset-0 rounded-full shadow-inner pointer-events-none"></div>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-2">DragonSight</h1>
+            <p class="text-lg text-indigo-600 font-medium mb-4">独立开发者 & 自媒体人</p>
+            <p class="max-w-2xl text-slate-600 leading-relaxed">
+                你好！我是一名热爱探索新技术的开发者和自媒体人。我专注于用AI解决实际问题，并通过社交媒体分享我的编程经验、生活见闻和效率工具。很高兴认识你！
+            </p>
+            <div class="mt-6 flex flex-wrap justify-center gap-2">
+                <span class="px-3 py-1 bg-white shadow-sm border border-slate-200 rounded-full text-sm text-slate-600">💻 开发</span>
+                <span class="px-3 py-1 bg-white shadow-sm border border-slate-200 rounded-full text-sm text-slate-600">🤖 AI</span>
+                <span class="px-3 py-1 bg-white shadow-sm border border-slate-200 rounded-full text-sm text-slate-600">✍️ 持续写作</span>
+            </div>
+        </header>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+        <!-- 社交媒体导航 -->
+        <section class="mt-20 reveal">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                <span class="bg-indigo-100 text-indigo-600 p-2 rounded-lg mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                </span>
+                联系与关注
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                
+                <!-- 抖音 -->
+                <a href="https://www.douyin.com/user/MS4wLjABAAAAWK2XlUogiALVtC0aRpWEL9htF9ATg8Dm1j7GjSGevv7rNavPpJGul5Dl_aKJi09n" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-douyin text-white rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform relative overflow-hidden">
+                        <!-- 简易抖音风格图标 -->
+                        <svg class="w-7 h-7 relative z-10" fill="currentColor" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-bold text-slate-800">抖音</h3>
+                        <p class="text-xs text-slate-500 mt-1">@51479765074</p>
+                    </div>
+                </a>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zn-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+                <!-- 小红书 -->
+                <a href="https://www.xiaohongshu.com/user/profile/5c7b1d62000000001201ebcb" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-xhs text-white rounded-xl flex items-center justify-center transform group-hover:-rotate-6 transition-transform">
+                        <span class="font-bold text-xl italic tracking-tighter">小红书</span>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-bold text-slate-800">小红书</h3>
+                        <p class="text-xs text-slate-500 mt-1">@977109229</p>
+                    </div>
+                </a>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dragonhuang">
-      <meta itemprop="description" content="多敲多练">
-    </span>
+                <!-- GitHub -->
+                <a href="https://github.com/dragon-hh" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-github text-white rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-bold text-slate-800">GitHub</h3>
+                        <p class="text-xs text-slate-500 mt-1">@dragon-hh</p>
+                    </div>
+                </a>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dragon的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">我的第一篇博客</a>
-        </h2>
+                <!-- 微信公众号 -->
+                <a href="#" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-wechat text-white rounded-xl flex items-center justify-center transform group-hover:-rotate-6 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.54 13.97c-.36 0-.66-.27-.66-.63 0-.36.3-.63.66-.63.36 0 .66.27.66.63 0 .36-.3.63-.66.63zm5.55 0c-.36 0-.66-.27-.66-.63 0-.36.3-.63.66-.63.36 0 .66.27.66.63 0 .36-.3.63-.66.63zm-2.77-5.64c2.81 0 5.09 1.9 5.09 4.24 0 2.34-2.28 4.24-5.09 4.24-1.42 0-2.74-.48-3.73-1.3l-2.07 1.06.56-1.89c-1.12-.92-1.81-2.18-1.81-3.6 0-2.34 2.28-4.25 5.09-4.25zm5.72-6.52c3.41 0 6.18 2.31 6.18 5.16 0 1.54-.78 2.92-2.06 3.93l-.58 2.05 2.27-1.16c1.13.9 2.65 1.45 4.27 1.45 0-2.85-2.77-5.16-6.18-5.16-1.02 0-1.99.21-2.86.58-.2-.93-.86-1.74-1.76-2.3.92-2.89 3.82-5.07 7.37-5.07z"/></svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-bold text-slate-800">微信公众号</h3>
+                        <p class="text-xs text-slate-500 mt-1">LightDragon AI</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">نُشر في</span>
-              
+        <!-- 重要经历 (时间轴) -->
+        <section class="mt-24 reveal">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                <span class="bg-indigo-100 text-indigo-600 p-2 rounded-lg mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </span>
+                重要经历
+            </h2>
+            
+            <div class="relative border-l-2 border-indigo-100 ml-4 sm:ml-6 md:ml-8 space-y-12 pb-8">
+                
+                <!-- 经历项 1 -->
+                <div class="relative pl-8 sm:pl-10 group">
+                    <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9px] top-1.5 ring-4 ring-white group-hover:scale-125 transition-transform duration-300 shadow-sm"></div>
+                    <div class="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 text-sm font-semibold rounded-full mb-3">2023 - 至今</span>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">独立开发者 & 自由撰稿人</h3>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            开发并维护了多款独立 Web 应用。同时在各大社交平台分享技术心得，累计获得 10W+ 粉丝关注。致力于探索 AI 与编程结合的无限可能。
+                        </p>
+                    </div>
+                </div>
 
-              <time title="أُنشأ: 2022-02-09 13:05:09 / عُدل: 08:52:35" itemprop="dateCreated datePublished" datetime="2022-02-09T13:05:09Z">2022-02-09</time>
-            </span>
+                <!-- 经历项 2 -->
+                <div class="relative pl-8 sm:pl-10 group">
+                    <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[9px] top-1.5 ring-4 ring-white group-hover:bg-indigo-400 group-hover:scale-125 transition-all duration-300 shadow-sm"></div>
+                    <div class="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-sm font-semibold rounded-full mb-3">2020 - 2023</span>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">某头部互联网公司 - 高级前端工程师</h3>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            参与核心业务线前端架构设计与开发，主导了多次大型活动的性能优化工作。带领 5 人团队完成了从 Vue 到 React 的技术栈迁移，大幅提升了开发效率。
+                        </p>
+                    </div>
+                </div>
 
-          
+                <!-- 经历项 3 -->
+                <div class="relative pl-8 sm:pl-10 group">
+                    <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[9px] top-1.5 ring-4 ring-white group-hover:bg-indigo-400 group-hover:scale-125 transition-all duration-300 shadow-sm"></div>
+                    <div class="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-sm font-semibold rounded-full mb-3">2016 - 2020</span>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">XX大学 - 计算机科学与技术 (本科)</h3>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            在校期间担任技术社团社长，多次获得国家级编程比赛奖项。打下了扎实的计算机科学理论基础。
+                        </p>
+                    </div>
+                </div>
 
-        </div>
-      </header>
+            </div>
+        </section>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常用hexo命令"><a href="#常用hexo命令" class="headerlink" title="常用hexo命令"></a>常用hexo命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;postName&quot;</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">&quot;pageName&quot;</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，&#x27;ctrl + c&#x27;关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#部署到GitHub</span></span><br><span class="line">hexo <span class="built_in">help</span>  <span class="comment"># 查看帮助</span></span><br><span class="line">hexo version  <span class="comment">#查看Hexo的版本</span></span><br></pre></td></tr></table></figure>
-
-<p>缩写：</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo <span class="keyword">new</span></span><br><span class="line">hexo g == hexo <span class="keyword">generate</span></span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>组合命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g <span class="comment">#生成并本地预览</span></span><br><span class="line">hexo d -g <span class="comment">#生成并上传</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          المحتويات
-        </li>
-        <li class="sidebar-nav-overview">
-          عام
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">dragonhuang</p>
-  <div class="site-description" itemprop="description">多敲多练</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">5</span>
-          <span class="site-state-item-name">المقالات</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">الوسوم</span>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
     </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">dragonhuang</span>
-</div>
-  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
+    <!-- Footer -->
+    <footer class="mt-12 py-8 border-t border-slate-200 text-center text-slate-500 text-sm bg-white/50 backdrop-blur-md">
+        <p>&copy; 2026 DragonSight. All rights reserved.</p>
     </footer>
-  </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+    <!-- 滚动动画脚本 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll(".reveal");
 
-<script src="/js/utils.js"></script>
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
 
-<script src="/js/motion.js"></script>
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add("active");
+                    }
+                });
+            };
 
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+            window.addEventListener("scroll", revealOnScroll);
+            // 初始触发一次
+            setTimeout(revealOnScroll, 100);
+        });
+    </script>
 </body>
 </html>
